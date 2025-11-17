@@ -99,18 +99,17 @@ Noisy • BM3D • Total Variation • DnCNN • RSIDNet(no CBAM) • OURS • G
 ## 🖼️ **Result Example 1 — Satellite Image**
 *(Full 4×3 image grid inside this single image)*
 
-
-![result1](<img width="999" height="613" alt="Screenshot 2025-11-18 at 12 17 01 AM" src="https://github.com/user-attachments/assets/545e2167-06d5-45a2-94b6-b28d3a78dd93" />)
+![result1](https://github.com/user-attachments/assets/545e2167-06d5-45a2-94b6-b28d3a78dd93)
 
 ---
 
 ## 🖼️ **Result Example 2 — Aeroplane Dataset**
 *(Full horizontal grid image inside this single image)*
 
-![result2](<img width="904" height="555" alt="Screenshot 2025-11-18 at 12 16 44 AM" src="https://github.com/user-attachments/assets/54a37bfe-8cfe-4ab5-9c8e-3c8577352d58" />
-sult2.png)
+![result2](https://github.com/user-attachments/assets/54a37bfe-8cfe-4ab5-9c8e-3c8577352d58)
 
 ---
+
 
 # 🏆 Quantitative Evaluation
 
