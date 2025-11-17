@@ -1,7 +1,7 @@
 # 🛰️ ISRO Internship Project – Attentive-RSIDNet  
 ### 🚀 A Two-Stage Deep Learning Framework for Remote Sensing Image Denoising
 
-This repository contains the implementation and results of my ISRO internship project, where I developed **Attentive-RSIDNet**, a robust image denoising framework designed specifically for **remote sensing satellite imagery** affected by **structured noise** like banding and striping.
+This repository contains the implementation and results of my ISRO internship project, where I developed **Attentive-RSIDNet**, a robust image denoising framework designed specifically for **remote sensing satellite imagery** affected by structured noise like banding and striping.
 
 The goal was to create a solution that removes heavy sensor-induced noise while preserving fine image details — something classical filters struggle with.
 
@@ -12,16 +12,16 @@ The goal was to create a solution that removes heavy sensor-induced noise while 
 Satellite images often suffer from **vertical/horizontal stripes, banding, and sensor errors**.  
 To solve this, I designed a **hybrid two-stage denoising pipeline**:
 
-### **🔹 Stage 1 — Classical Filtering**
+### 🔹 Stage 1 — Classical Filtering  
 Used to weaken strong striping/banding patterns in the input image.
 
-### **🔹 Stage 2 — Deep Learning Model (Attentive-RSIDNet)**
+### 🔹 Stage 2 — Deep Learning Model (Attentive-RSIDNet)  
 A CNN enhanced with:
 
-- 🧠 **Multi-Scale Feature Extraction**
-- 🎯 **Residual Attention Blocks (ERABs)**
-- 👁️ **CBAM Attention (Channel + Spatial)**
-- 🔁 **Global Residual Learning**
+- 🧠 Multi-Scale Feature Extraction  
+- 🎯 Residual Attention Blocks (ERABs)  
+- 👁️ CBAM Attention (Channel + Spatial)  
+- 🔁 Global Residual Learning  
 
 This combination allows the network to **focus on important features** and **suppress noise intelligently**.
 
@@ -41,39 +41,49 @@ This combination allows the network to **focus on important features** and **sup
 ## 📂 Dataset Summary
 
 ### **Real Satellite Dataset**
-- Contains natural striping & banding noise.
-- Clean ground truth generated using **sensor-specific LUT correction**.
-- Original resolution: *12333 × 12333*
-- Converted into **128 × 128 patches** (~13,000 patches)
-- 90% training • 10% testing
+- Contains natural striping & banding artifacts  
+- Clean ground truth created using **sensor-specific LUT correction**  
+- Original resolution: **12333 × 12333 pixels**  
+- Converted into **128 × 128 patches** (~13,000 total)  
+- 90% train • 10% test  
 
 ### **Synthetic Dataset**
-To increase robustness and prevent overfitting:
 - Airport + Forest images  
 - Artificial banding noise added  
-- Same patch size: **128 × 128**
+- Same 128 × 128 patch size  
+- Helps avoid overfitting and improves generalization  
 
 ---
 
-## 🧠 Model Architecture (Simplified)
+# 🏗️ Model Architecture
+
+Below is the complete architecture diagram of the **Attentive-RSIDNet** framework, including the MSFE block, ERAB block, CBAM attention, and the final residual learning pathway.
+
+*(Replace the link below with your actual architecture image URL once uploaded)*
+
+![architecture](https://github.com/user-attachments/assets/91ea8ebc-fd46-4e1f-8bb8-cbb3ae0f9e8d)
+
+
+---
+
+## 🧠 Model Architecture (Simplified Text Summary)
 
 ### 1️⃣ Multi-Scale Feature Extraction  
-Captures fine and coarse patterns using 1×1, 3×3, 5×5, 7×7 convolutions.
+4 parallel convolutions: **1×1, 3×3, 5×5, 7×7**  
+Captures fine + coarse features simultaneously.
 
 ### 2️⃣ Enhanced Residual Attention Block (ERAB)  
-Includes:
-- Two Conv-BN-ReLU layers  
+- Two Conv + BN + ReLU layers  
 - Residual skip connection  
-- **CBAM**:  
-  - Channel Attention → *what to focus on*  
-  - Spatial Attention → *where to focus on*
+- **CBAM** consisting of:  
+  - Channel Attention → focuses on important feature channels  
+  - Spatial Attention → highlights important spatial regions  
 
 ### 3️⃣ Noise Residual Learning  
-The model predicts **noise**, not the clean image:
+Instead of predicting the clean image, the model predicts **noise**:
 
 
-This leads to sharper, more accurate reconstructions.
-
+This strategy gives sharper and more accurate reconstructions.
 
 ---
 
@@ -82,7 +92,7 @@ This leads to sharper, more accurate reconstructions.
 - Framework: TensorFlow  
 - GPU: NVIDIA A100 (80 GB)  
 - Epochs: 120  
-- Loss: MSE  
+- Loss Function: MSE  
 - Optimizer: Adam  
 - Learning Rate: 1e-3 (cosine annealing)  
 
@@ -90,26 +100,22 @@ This leads to sharper, more accurate reconstructions.
 
 # 📊 Results
 
-Below are the final test results.  
-Each image already contains a **grid comparison** of:  
-Noisy • BM3D • Total Variation • DnCNN • RSIDNet(no CBAM) • OURS • Ground Truth
+Each result image already contains a **complete grid comparison**:  
+Noisy • BM3D • TV • DnCNN • RSIDNet(no CBAM) • OURS • Ground Truth  
 
 ---
 
-## 🖼️ **Result Example 1 — Satellite Image**
-
+## 🖼️ Result Example 1 — Satellite Image
 
 ![result1](https://github.com/user-attachments/assets/545e2167-06d5-45a2-94b6-b28d3a78dd93)
 
 ---
 
-## 🖼️ **Result Example 2 — Aeroplane Dataset**
-
+## 🖼️ Result Example 2 — Aeroplane Dataset
 
 ![result2](https://github.com/user-attachments/assets/54a37bfe-8cfe-4ab5-9c8e-3c8577352d58)
 
 ---
-
 
 # 🏆 Quantitative Evaluation
 
@@ -137,18 +143,18 @@ Noisy • BM3D • Total Variation • DnCNN • RSIDNet(no CBAM) • OURS • G
 
 # 🎯 Pixel-Level Fidelity
 
-The model shows strong **1:1 pixel intensity correlation** with the ground truth, ensuring:
+The model shows a strong **1:1 correlation** between predicted and ground-truth pixel intensities, ensuring:
 
-- minimal color drift  
-- high structural consistency  
-- accurate detail recovery  
-- robust performance across datasets  
+- Minimal color or brightness drift  
+- High structural consistency  
+- Accurate restoration of textures  
+- Reliable performance across datasets  
 
 ---
 
 # 🙌 Acknowledgements
 
-This research project was completed during my internship at:
+This research work was completed during my internship at:
 
 **🇮🇳 ISRO — Space Applications Centre (SAC)**  
 Mentor: **Tushar Shukla (Scientist/Engineer – SD)**  
