@@ -74,56 +74,45 @@ The model predicts **noise**, not the clean image:
 
 This leads to sharper, more accurate reconstructions.
 
+
 ---
 
-## 🧪 Training Details
+## 🧪 Training Configuration
 
-- Framework: **TensorFlow**
-- GPU: **NVIDIA A100 (80 GB)**
-- Epochs: **120**
-- LR: **1e-3 (cosine annealing)**
-- Optimizer: **Adam**
-- Loss: **MSE**
-- Activation: ReLU  
-- Normalization: BatchNorm  
+- Framework: TensorFlow  
+- GPU: NVIDIA A100 (80 GB)  
+- Epochs: 120  
+- Loss: MSE  
+- Optimizer: Adam  
+- Learning Rate: 1e-3 (cosine annealing)  
 
 ---
 
 # 📊 Results
 
-Below are sample visual comparisons between different denoising methods.  
-(*Replace the placeholder links with your actual image paths inside your repo’s `results/` folder.*)
+Below are the final test results.  
+Each image already contains a **grid comparison** of:  
+Noisy • BM3D • Total Variation • DnCNN • RSIDNet(no CBAM) • OURS • Ground Truth
 
 ---
 
-## 🖼️ **Result Example 1 — Satellite Image (Structured Noise)**
+## 🖼️ **Result Example 1 — Satellite Image**
+*(Full 4×3 image grid inside this single image)*
 
-| Noisy Image | BM3D | Total Variation | DnCNN |
-|------------|------|----------------|--------|
-| ![noisy](results/noisy1.png) | ![bm3d](results/bm3d1.png) | ![tv](results/tv1.png) | ![dcnn](results/dcnn1.png) |
-
-| RSIDNet (w/o CBAM) | **OURS (Attentive-RSIDNet)** | Ground Truth |
-|--------------------|-----------------------------|----------------|
-| ![rsid](results/rsid1.png) | ![ours](results/ours1.png) | ![gt](results/gt1.png) |
+![result1](results/result1.png)
 
 ---
 
-## 🖼️ **Result Example 2 — Aeroplane Dataset (Challenging Case)**
+## 🖼️ **Result Example 2 — Aeroplane Dataset**
+*(Full horizontal grid image inside this single image)*
 
-| Noisy Image | BM3D | Total Variation | DnCNN |
-|------------|------|----------------|--------|
-| ![noisy2](results/noisy2.png) | ![bm3d2](results/bm3d2.png) | ![tv2](results/tv2.png) | ![dcnn2](results/dcnn2.png) |
-
-| RSIDNet (w/o CBAM) | **OURS Model** | Ground Truth |
-|--------------------|----------------|----------------|
-| ![rsid2](results/rsid2.png) | ![ours2](results/ours2.png) | ![gt2](results/gt2.png) |
+![result2](results/result2.png)
 
 ---
 
-## 🏆 Quantitative Results
+# 🏆 Quantitative Evaluation
 
 ### **Table 1 — Standard Satellite Test Image**
-
 | Method | PSNR (dB) | SSIM |
 |--------|-----------|--------|
 | BM3D | 14.54 | 0.3832 |
@@ -134,8 +123,7 @@ Below are sample visual comparisons between different denoising methods.
 
 ---
 
-### **Table 2 — Aeroplane Dataset (Hard Case)**
-
+### **Table 2 — Aeroplane Dataset**
 | Method | PSNR (dB) | SSIM |
 |--------|-----------|--------|
 | BM3D | 13.97 | 0.3342 |
@@ -148,25 +136,24 @@ Below are sample visual comparisons between different denoising methods.
 
 # 🎯 Pixel-Level Fidelity
 
-The model produces pixel intensities that closely follow a **1:1 correlation** with the ground truth.  
-This ensures:
-- No color bias  
-- No over-smoothing  
-- Accurate reconstruction of shadows, highlights, and textures  
+The model shows strong **1:1 pixel intensity correlation** with the ground truth, ensuring:
+
+- minimal color drift  
+- high structural consistency  
+- accurate detail recovery  
+- robust performance across datasets  
 
 ---
 
 # 🙌 Acknowledgements
 
-This project was completed as part of my internship at:
+This research project was completed during my internship at:
 
 **🇮🇳 ISRO — Space Applications Centre (SAC)**  
-Under the guidance of:  
-**Tushar Shukla (Scientist/Engineer – SD)**
+Mentor: **Tushar Shukla (Scientist/Engineer – SD)**  
 
 ---
 
-# ⭐ If You Found This Helpful  
-Please ⭐ **star this repository** and share your feedback!
-
+# ⭐ If You Found This Useful  
+Please ⭐ **star the repository** and share your thoughts!
 
